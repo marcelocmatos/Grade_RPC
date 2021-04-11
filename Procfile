@@ -1,1 +1,1 @@
-web: gunicorn app:app
+web: gunicorn grade_rpc:'create_app()'
