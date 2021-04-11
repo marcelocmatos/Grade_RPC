@@ -1,10 +1,8 @@
+from grade import app
 from flask import Flask, render_template, request, json, flash
 import requests, json
 from datetime import datetime
 import pandas as pd
-
-app = Flask(__name__)
-app.config['SECRET_KEY'] = '0fb59abbe2bb39814d80f1d1'
 
 @app.route('/', methods=['GET', 'POST'])
 def grade():
@@ -25,25 +23,29 @@ def grade():
             requisicao = requests.get(url.format(data_correta)).json()['programme']['entries']
             flash('Data escolhida está indisponível. Mostrando a grade de horários de hoje.', category='danger')
 
-        b = 0
-        for i in requisicao:
-            programa = requests.get(url.format(data_correta)).json()['programme']['entries'][b]['title']
-            hora_inicio = str(
-                requests.get(url.format(data_correta)).json()['programme']['entries'][b]['human_start_time'])[:5]
-            hora_fim = str(requests.get(url.format(data_correta)).json()['programme']['entries'][b]['human_end_time'])[
-                       :5]
-            programacao_diaria = {
-                'programa': programa,
-                'hora_inicio': hora_inicio,
-                'hora_fim': hora_fim,
-            }
-            b += 1
-
-            programacao.append(programacao_diaria)
+    b = 0
+    for i in requisicao:
+        programa = requests.get(url.format(data_correta)).json()['programme']['entries'][b]['title']
+        hora_inicio = str(requests.get(url.format(data_correta)).json()['programme']['entries'][b]['human_start_time'])[:5]
+        hora_fim = str(requests.get(url.format(data_correta)).json()['programme']['entries'][b]['human_end_time'])[:5]
+        sinopse = requests.get(url.format(data_correta)).json()['programme']['entries'][b]['custom_info']['Resumos']['Sinopse']
+        classificacao = requests.get(url.format(data_correta)).json()['programme']['entries'][b]['custom_info']['Classificacao']['Idade']
+        genero = requests.get(url.format(data_correta)).json()['programme']['entries'][b]['custom_info']['Genero']['Descricao']
+        programacao_diaria = {
+                'Programa': programa,
+                'Sinopse': sinopse,
+                'Início': hora_inicio,
+                'Fim': hora_fim,
+                'Classificação': classificacao,
+                'Genêro': genero,
+                # 'pagina_programa': pagina_programa
+                            }
+        b += 1
+        programacao.append(programacao_diaria)
 
     context = json.dumps(programacao, ensure_ascii=False)
     df = pd.read_json(context)
-    df = df.rename(columns={'programa': 'Programa', 'hora_inicio': 'Início', 'hora_fim': 'Fim'})
+
     dados = df.to_dict('records')
     colunas = df.columns.values
     str_date_hoje = datetime.today()
@@ -52,12 +54,10 @@ def grade():
     str_date = datetime.strftime(str_date, '%d/%m/%Y')
     return render_template('index.html', dados=dados, colunas=colunas, str_date=str_date, str_date_hoje=str_date_hoje)
 
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
 
 @app.route("/404")
 def error_404():
     return render_template('404.html')
-
-
-
-if __name__ == '__main':
-    app.run()

@@ -1,0 +1,45 @@
+body {
+	color: white;
+	font-family: 'Roboto Mono',monospace;
+	min-height: 400px;
+	background-size: 100vh;
+	background-position: center bottom;
+	background-repeat: no-repeat;
+}
+
+	.copyright {
+	color: #FFFFFF;
+	font-size: 13px;
+	margin: 20px 20px 20px;
+	text-align: center;
+
+   }
+	.titulo{
+	text-align: justify;
+	color: white;
+	font-family: 'Roboto Mono',monospace;
+}
+	.tabela{
+	text-align: center;
+	font-family: 'Roboto Mono',monospace;
+	border-radius: 20%;
+	border-color: bisque;
+	}
+	.imagem{
+	  text-align: center;
+	  margin-left: 640px;
+	}
+	.alert-danger {
+		color: #721c24;
+		background-color: #f8d7da;
+		border-color: #f5c6cb;
+		width: 600px;
+		margin-left: 480px;
+	}
+	.alert {
+		position: relative;
+		padding: .75rem 1.25rem;
+		margin-bottom: 1rem;
+		border: 1px solid transparent;
+		border-radius: .25rem;
+	}
