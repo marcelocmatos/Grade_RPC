@@ -38,7 +38,6 @@ def grade():
                 'Fim': hora_fim,
                 'Classificação': classificacao,
                 'Genêro': genero,
-                # 'pagina_programa': pagina_programa
                             }
         b += 1
         programacao.append(programacao_diaria)
