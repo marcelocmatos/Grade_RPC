@@ -4,7 +4,7 @@ import requests, json
 from datetime import datetime
 import pandas as pd
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/', methods=['POST'])
 def grade():
     url = 'https://epg-api.video.globo.com/programmes/1337?date={}'
     programacao = []
