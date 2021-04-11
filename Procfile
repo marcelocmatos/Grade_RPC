@@ -1,1 +1,1 @@
-web: gunicorn grade_rpc:'create_app()'
+web: gunicorn flaskapp:app
