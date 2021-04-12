@@ -25,12 +25,12 @@ def grade():
 
     b = 0
     for i in requisicao:
-        programa = requests.get(url.format(data_correta)).json()['programme']['entries'][b]['title']
-        hora_inicio = str(requests.get(url.format(data_correta)).json()['programme']['entries'][b]['human_start_time'])[:5]
-        hora_fim = str(requests.get(url.format(data_correta)).json()['programme']['entries'][b]['human_end_time'])[:5]
-        sinopse = requests.get(url.format(data_correta)).json()['programme']['entries'][b]['custom_info']['Resumos']['Sinopse']
-        classificacao = requests.get(url.format(data_correta)).json()['programme']['entries'][b]['custom_info']['Classificacao']['Idade']
-        genero = requests.get(url.format(data_correta)).json()['programme']['entries'][b]['custom_info']['Genero']['Descricao']
+        programa = requisicao[b]['title']
+        hora_inicio = str(requisicao[b]['human_start_time'])[:5]
+        hora_fim = str(requisicao[b]['human_end_time'])[:5]
+        sinopse = requisicao[b]['custom_info']['Resumos']['Sinopse']
+        classificacao = requisicao[b]['custom_info']['Classificacao']['Idade']
+        genero = requisicao[b]['custom_info']['Genero']['Descricao']
         programacao_diaria = {
                 'Programa': programa,
                 'Sinopse': sinopse,
