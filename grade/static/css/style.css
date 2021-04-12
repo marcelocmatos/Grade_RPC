@@ -7,36 +7,41 @@ body {
 	background-repeat: no-repeat;
 }
 
-	.copyright {
+.copyright {
 	color: #FFFFFF;
 	font-size: 13px;
 	margin: 20px 20px 20px;
 	text-align: center;
 
    }
-	.titulo{
-	text-align: justify;
+.titulo_h2{
+	text-align: center;
 	color: white;
 	font-family: 'Roboto Mono',monospace;
 }
-	.tabela{
+.titulo{
+	text-align: center;
+	color: white;
+	font-family: 'Roboto Mono',monospace;
+}
+table{
 	text-align: center;
 	font-family: 'Roboto Mono',monospace;
 	border-radius: 20%;
 	border-color: bisque;
 	}
-	.imagem{
+.imagem{
 	  text-align: center;
 	  margin-left: 640px;
 	}
-	.alert-danger {
+.alert-danger {
 		color: #721c24;
 		background-color: #f8d7da;
 		border-color: #f5c6cb;
 		width: 600px;
 		margin-left: 480px;
 	}
-	.alert {
+.alert {
 		position: relative;
 		padding: .75rem 1.25rem;
 		margin-bottom: 1rem;

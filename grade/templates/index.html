@@ -7,8 +7,6 @@ Guia de Programação RPC
 
 
 {% block content%}
-  
-
     
     <div class="position-absolute top-0 start-0">
       <form method="POST" class="form-control-sm">
@@ -40,13 +38,13 @@ Guia de Programação RPC
     <div class="row" style="margin-top:20px; margin-left:400px; margin-right:40px">
       <div class="mb-4">
          <br>
-         <table  class="rounded table table-hover table-dark table-bordered border border-3">
+         <table  class="table table-hover table-dark table-bordered border border-3">
             <thead>
                <tr>
                  {% if str_date is not none %}
-                <h2>Data da Grade: {{ str_date }}</h2>
+                <h2 class="titulo_h2">Data da Grade: {{ str_date }}</h2>
                    {% else %}
-                   <h2 class="titulo">Data da Grade: {{ str_date_hoje }}</h2>
+                   <h2 class="titulo_h2">Data da Grade: {{ str_date_hoje }}</h2>
                 {% endif %}
                 {% for col in colunas %}
                 <th scope="col">{{ col }}</th>
