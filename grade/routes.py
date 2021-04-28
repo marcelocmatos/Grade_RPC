@@ -28,12 +28,8 @@ def grade():
         utf = float(requisicao[b]['custom_info']['BaseUTCOffset'][2:3])
         delta = timedelta(hours=utf)
         programa = requisicao[b]['title']
-        hora_inicio = str(requisicao[b]['human_start_time'])[:5]
-        hora_inicio = datetime.strptime(hora_inicio, '%H:%M')-delta
-        hora_inicio = datetime.strftime(hora_inicio, '%H:%M')
-        hora_fim = str(requisicao[b]['human_end_time'])[:5]
-        hora_fim = datetime.strptime(hora_fim, '%H:%M')-delta
-        hora_fim = datetime.strftime(hora_fim, '%H:%M')
+        hora_inicio = datetime.strftime((datetime.strptime((str(requisicao[b]['human_start_time'])[:5]), '%H:%M')-delta), '%H:%M')
+        hora_fim = datetime.strftime((datetime.strptime((str(requisicao[b]['human_end_time'])[:5]), '%H:%M')-delta), '%H:%M')
         sinopse = requisicao[b]['custom_info']['Resumos']['Sinopse']
         classificacao = requisicao[b]['custom_info']['Classificacao']['Idade']
         genero = requisicao[b]['custom_info']['Genero']['Descricao']
